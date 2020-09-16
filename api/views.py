@@ -7,7 +7,7 @@ from .serializers import ArticleSerializer
 
 
 
-
+@api_view(['GET', 'POST'])
 def article_list(request):
     
     if request.method == 'GET':
@@ -23,6 +23,7 @@ def article_list(request):
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
 
+@api_view(['GET', 'PUT', 'DELETE'])
 def article_detail(request, pk):
     
     try:
